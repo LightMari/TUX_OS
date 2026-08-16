@@ -18,15 +18,20 @@ protected static String  cmd_command = "";
         System.out.println("os/home/user > type 'help' for commands ");
         while (true) {
             System.out.print("os/home/user > ");
-            cmd_command = cmd_scanner.nextLine();
-            if(cmd_command.equals("help")) {
-                Command_List.getCommand();
-            } else if (cmd_command.equals("exit")) {
+            cmd_command = cmd_scanner.nextLine().toLowerCase();
+            String [] cmd = cmd_command.split(" ");
+
+            if(cmd[0].equals("help")) {
+                Command_List.getCommands();
+            } else if (cmd[0].equals("exit")) {
                 break;
-            } else if (cmd_command.equals("echo")) {
-                System.out.println("HELLO !!");
-            }
-            else{
+            } else if (cmd[0].equals("echo")) {
+               Command_List.EchoCommand(cmd);
+            } else if (cmd[0].equals("date")) {
+                Command_List.DateCommand();
+            } else if (cmd[0].equals("time")) {
+                Command_List.TimeCommand();
+            } else{
                 System.out.println("command not recognized");
             }
 
