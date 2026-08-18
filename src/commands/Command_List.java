@@ -15,6 +15,8 @@ public class Command_List {
                 "echo - print any text",
                 "date - current date",
                 "time - current time",
+                "ls - list directory",
+                "clear - clear terminal ",
         };
         for (String command : commandList) {
             System.out.println(command);
@@ -35,6 +37,14 @@ public class Command_List {
         LocalTime time =  LocalTime.now();
         System.out.println(time);
     }
+    public static String lsCommand() {
+        return "user/ \n";
+    }
+    public static String clearCommand() {
+        return "clear \n";
+    }
+
+
 
 
 
