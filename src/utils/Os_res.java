@@ -10,7 +10,7 @@ public class Os_res {
              "   ██║   ╚██████╔╝██╔╝ ██╗    ╚██████╔╝███████║    \n" +
              "   ╚═╝    ╚═════╝ ╚═╝  ╚═╝     ╚═════╝ ╚══════╝    \n" +
              "---------------------------------------------------";
-
-
+    public final static String  system_path = "/home/maries/Development/Java/TUX_OS/src/";
+    public static String  os_path = "file_system/root/canvas/";
 
 }

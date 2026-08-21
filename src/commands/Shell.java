@@ -24,6 +24,9 @@ public String execute(String [] args) {
             return Command_List.lsCommand();
         case "clear":
             return Command_List.clearCommand();
+        case "touch":
+            Command_List.touchCommand(args[1]);
+            break;
         default:
             return ("command not recognized \n");
 

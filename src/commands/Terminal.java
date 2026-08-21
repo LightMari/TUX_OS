@@ -1,17 +1,16 @@
 package commands;
+import utils.Os_res;
+
 import java.util.Scanner;
 
 public class Terminal {
     private static final Scanner cmd_scanner = new Scanner(System.in);
     static String  cmd_command = "";
-    static String cmd ="home/user/ > ";
-    static StringBuilder cmd_line = new StringBuilder(cmd);
-
     public static void start() {
         Shell shell = new Shell();
-        System.out.println("home/user/ > type 'help' for commands ");
+        System.out.println(Os_res.os_path + "> type 'help' for commands ");
         while (true) {
-            System.out.print(cmd_line.toString());
+            System.out.print(Os_res.os_path + "> ");
             cmd_command = cmd_scanner.nextLine().toLowerCase();
             String [] cmd = cmd_command.split(" ");
             String result = shell.execute(cmd);
