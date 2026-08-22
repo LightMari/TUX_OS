@@ -13,13 +13,12 @@ public class Terminal {
             System.out.print(Os_res.os_path + "> ");
             cmd_command = cmd_scanner.nextLine().toLowerCase();
             String [] cmd = cmd_command.split(" ");
-            String result = shell.execute(cmd);
 
-            if(result.equals("exit")) {
+            if(cmd[0].equals("exit")) {
                 break;
             }
             else {
-                System.out.print(result);
+                shell.execute(cmd);
             }
 
 
