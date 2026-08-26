@@ -1,5 +1,7 @@
 package utils;
 
+import java.util.HashMap;
+
 public class Os_res {
     public static String logo =
              "---------------------------------------------------\n" +
@@ -12,8 +14,7 @@ public class Os_res {
              "---------------------------------------------------";
     public final static String  system_path = "/home/maries/Development/Java/TUX_OS/src/";
     public static String  os_path = "file_system/root/canvas/";
-
-
+    public static HashMap<String,String> animals = new HashMap<>();
 
     public static void bootAnimation() {
             String [] animations={
@@ -46,6 +47,38 @@ public class Os_res {
                 }
             }
             System.out.println("-----------------------------------------");
-
+            set_animals();
     }
+    private static void set_animals(){
+        animals.put("cat","   |\\---/|\n" +
+                "   | ,_, |\n" +
+                "    \\_`_/-..----.\n" +
+                " ___/ `   ' ,\"\"+ \\  sk\n" +
+                "(__...'   __\\    |`.___.';\n" +
+                "  (_,...'(_,.`__)/'.....+");
+        animals.put("horse","           ,--,\n" +
+                "     _ ___/ /\\|\n" +
+                " ,;'( )__, )  ~\n" +
+                "//  //   '--; \n" +
+                "'   \\     | ^\n" +
+                "     ^    ^");
+        animals.put("fish","        O  o\n" +
+                "          _\\_   o\n" +
+                ">('>   \\\\/  o\\ .\n" +
+                "       //\\___=\n" +
+                "          ''");
+        animals.put("spider"," ||  ||  \n" +
+                " \\\\()// \n" +
+                "//(__)\\\\\n" +
+                "||    ||");
+        animals.put("dino","             __\n" +
+                "              / _)\n" +
+                "     _/\\/\\/\\_/ /\n" +
+                "   _|         /\n" +
+                " _|  (  | (  |\n" +
+                "/__.-'|_|--|_|");
+    }
+
 }
+
+

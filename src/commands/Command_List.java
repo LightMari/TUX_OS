@@ -10,10 +10,7 @@ import java.time.chrono.ChronoLocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.nio.file.*;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Stream;
 
 public class Command_List {
@@ -32,6 +29,8 @@ public class Command_List {
                 "pwd - display current directory",
                 "mvf - move forward into a folder",
                 "mvb - move backward into a folder",
+                "draw - display an ascii art animal",
+                "man - display the manual for command",
                 "-------------------------------",
         };
         for (String command : commandList) {
@@ -153,9 +152,25 @@ public class Command_List {
             System.out.println("no path exists");
         }
     }
+    public static void drawCommand(String animal_Name) {
+        if(!Objects.equals(animal_Name, "r")){
+            if(Os_res.animals.get(animal_Name) != null)
+            System.out.println("\n"+Os_res.animals.get(animal_Name)+"\n");
+            else
+                System.out.println("  _____                                    _                           _   _ \n" +
+                        "  \\_   \\_ __   ___ ___  _ __ _ __ ___  ___| |_  __      _____  _ __ __| | / \\\n" +
+                        "   / /\\/ '_ \\ / __/ _ \\| '__| '__/ _ \\/ __| __| \\ \\ /\\ / / _ \\| '__/ _` |/  /\n" +
+                        "/\\/ /_ | | | | (_| (_) | |  | | |  __/ (__| |_   \\ V  V / (_) | | | (_| /\\_/ \n" +
+                        "\\____/ |_| |_|\\___\\___/|_|  |_|  \\___|\\___|\\__|   \\_/\\_/ \\___/|_|  \\__,_\\/   \n");
+        }
+        else{
+            String[] animals = Os_res.animals.keySet().toArray(new String[0]);
+            int animal_len =  Os_res.animals.size();
+            Random rand_gen = new Random();
+            System.out.println("\n"+Os_res.animals.get(animals[rand_gen.nextInt(0,animal_len)])+"\n");
+        }
 
-
-
+    }
 
 
 

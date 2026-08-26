@@ -39,6 +39,9 @@ public void execute(String [] args) {
         case "mvb":
             Command_List.mvbCommand();
             break;
+        case "draw":
+            Command_List.drawCommand(args[1]);
+            break;
         default:
             System.out.println("command not recognized");
 
