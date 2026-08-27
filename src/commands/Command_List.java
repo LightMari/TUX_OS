@@ -171,7 +171,21 @@ public class Command_List {
         }
 
     }
+    public static void manCommand(String command_name) {
+        if(!Objects.equals(command_name, "")){
+            if(Os_res.installedCommands.get(command_name) != null){
+                System.out.println("\n"+Os_res.installedCommands.get(command_name));
+            }
+            else{
+                System.out.println("  _____                                    _                           _   _ \n" +
+                        "  \\_   \\_ __   ___ ___  _ __ _ __ ___  ___| |_  __      _____  _ __ __| | / \\\n" +
+                        "   / /\\/ '_ \\ / __/ _ \\| '__| '__/ _ \\/ __| __| \\ \\ /\\ / / _ \\| '__/ _` |/  /\n" +
+                        "/\\/ /_ | | | | (_| (_) | |  | | |  __/ (__| |_   \\ V  V / (_) | | | (_| /\\_/ \n" +
+                        "\\____/ |_| |_|\\___\\___/|_|  |_|  \\___|\\___|\\__|   \\_/\\_/ \\___/|_|  \\__,_\\/   \n");
+            }
+        }
 
+    }
 
 
 }

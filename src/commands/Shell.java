@@ -42,6 +42,9 @@ public void execute(String [] args) {
         case "draw":
             Command_List.drawCommand(args[1]);
             break;
+        case "man":
+            Command_List.manCommand(args[1]);
+            break;
         default:
             System.out.println("command not recognized");
 
