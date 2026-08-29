@@ -18,35 +18,35 @@ public class Os_res {
     public static HashMap<String,String> installedCommands = new HashMap<>();
     public static void bootAnimation() {
             String [] animations={
-                    "Starting System.....",
-                    "Starting System check.....",
-                    "Starting Bootloader......",
-                    "Checking Hardware.....",
-                    "Checking Ram.....",
-                    "Checking Kernel.....",
-                    "Booting System process.....",
-                    "Starting Device manager......",
-                    "Starting Process Handler.....",
-                    "Starting Services......",
-                    "Booting OS......",
-                    "Checking TUI......",
-                    "Booting TUI......",
-                    "Checking Screen......",
-                    "Booting Screen......",
-                    "Booting Logo......",
+                    "\\ Starting System.....",
+                    "| Starting System check.....",
+                    "- Starting Bootloader......",
+                    "/ Checking Hardware.....",
+                    "\\ Checking Ram.....",
+                    "| Checking Kernel.....",
+                    "- Booting System process.....",
+                    "/ Starting Device manager......",
+                    "\\ Starting Process Handler.....",
+                    "| Starting Services......",
+                    "- Booting OS......",
+                    "/ Checking TUI......",
+                    "\\ Booting TUI......",
+                    "| Checking Screen......",
+                    "- Booting Screen......",
+                    "/ Booting Logo......",
                     "Starting System......"
             };
 
             for(String animation:animations){
                 try {
                     Thread.sleep(800);
-                    System.out.println(animation);
+                    System.out.print("\r"+animation);
                 }
                 catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
-            System.out.println("-----------------------------------------");
+            System.out.println("\n-----------------------------------------");
             set_animals();
             set_installed_commands();
     }
@@ -113,9 +113,11 @@ public class Os_res {
          installedCommands.put("mvb","This command used move out of a directory \n" +
                 "type 'mvb' *no args* : move back from directory \n" +
                 "no 'args' get out from current directory  \n");
-        installedCommands.put("touch","This command used create a new file \n" +
-                "type 'touch' *file name .extension * : create a file  \n" +
-                "touch 'filename works with extension'  \n");
+        installedCommands.put("touch", """
+                This command used create a new file\s
+                type 'touch' *file name .extension * : create a file \s
+                touch 'filename works with extension' \s
+                """);
         installedCommands.put("draw","This command draw an ascii art animal into the terminal \n" +
                 "type 'draw' *animal name* : draw an animal  \n" +
                 "draw 'animal name or r - random animal to display'  \n");
