@@ -39,7 +39,7 @@ public class Os_res {
 
             for(String animation:animations){
                 try {
-                    Thread.sleep(800);
+                    Thread.sleep(500);
                     System.out.print("\r"+animation);
                 }
                 catch (InterruptedException e) {

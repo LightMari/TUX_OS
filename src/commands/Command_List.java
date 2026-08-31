@@ -1,5 +1,6 @@
 package commands;
 
+import file_system.root.canvas.programs.Nano_TE;
 import utils.Os_res;
 
 import java.io.File;
@@ -31,6 +32,9 @@ public class Command_List {
                 "mvb - move backward into a folder",
                 "draw - display an ascii art animal",
                 "man - display the manual for command",
+                "cat - display the text from a file",
+                "nano - enter text editor",
+
                 "-------------------------------",
         };
         for (String command : commandList) {
@@ -185,6 +189,31 @@ public class Command_List {
             }
         }
 
+    }
+    public static void nanosCommand(String file_name) {
+        Nano_TE textEditor = new Nano_TE();
+        if(!Objects.equals(file_name, "n")) {
+            textEditor.openFile(Os_res.system_path+pwdCommand() + "/" + file_name);
+        }
+        else {
+            touchCommand("untitled.txt");
+            textEditor.openFile(Os_res.system_path+pwdCommand()+"/untitled.txt");
+        }
+    }
+
+    public static void catCommand(String fileName) {
+        Path path = Path.of(Os_res.system_path+pwdCommand()+fileName);
+        if(!Objects.equals(fileName, "")) {
+            try {
+            System.out.println(Files.readString(path));
+            }
+            catch (IOException e) {
+                System.out.println("no file exists");
+            }
+        }
+        else {
+            System.out.println("no file exists");
+        }
     }
 
 

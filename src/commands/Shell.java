@@ -44,6 +44,12 @@ public void execute(String [] args) {
         case "man":
             Command_List.manCommand(args[1]);
             break;
+        case"nano":
+            Command_List.nanosCommand(args[1]);
+            break;
+        case"cat":
+            Command_List.catCommand(args[1]);
+            break;
         default:
             System.out.println("command not recognized");
 
