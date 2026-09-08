@@ -21,6 +21,7 @@ public class Terminal {
                         shell.execute(cmd);
             }
             catch (Exception e) {
+                //nothing will do
 
             }
 

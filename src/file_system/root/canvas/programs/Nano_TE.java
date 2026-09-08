@@ -1,10 +1,8 @@
 package file_system.root.canvas.programs;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class Nano_TE {
@@ -25,7 +23,6 @@ public class Nano_TE {
         }
         catch (IOException e){
             System.out.println(e.getMessage());
-            e.printStackTrace();
         }
 
 

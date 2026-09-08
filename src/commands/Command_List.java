@@ -3,11 +3,8 @@ package commands;
 import file_system.root.canvas.programs.Nano_TE;
 import utils.Os_res;
 
-import java.io.File;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.time.chrono.ChronoLocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.nio.file.*;
 import java.io.IOException;
@@ -20,7 +17,7 @@ public class Command_List {
         String [] commandList  =  {
                 "-------------------------------",
                 "help - help for commands",
-                "exit - shut down OS",
+                "exit - exit the program",
                 "echo - print any text",
                 "date - current date",
                 "time - current time",
@@ -30,7 +27,7 @@ public class Command_List {
                 "pwd - display current directory",
                 "mvf - move forward into a folder",
                 "mvb - move backward into a folder",
-                "draw - display an ascii art animal",
+                "draw - display a cool ASCII art animals",
                 "man - display the manual for command",
                 "cat - display the text from a file",
                 "nano - enter text editor",
@@ -190,7 +187,7 @@ public class Command_List {
         }
 
     }
-    public static void nanosCommand(String file_name) {
+    public static void nanoCommand(String file_name) {
         Nano_TE textEditor = new Nano_TE();
         if(!Objects.equals(file_name, "n")) {
             textEditor.openFile(Os_res.system_path+pwdCommand() + "/" + file_name);
@@ -203,17 +200,15 @@ public class Command_List {
 
     public static void catCommand(String fileName) {
         Path path = Path.of(Os_res.system_path+pwdCommand()+fileName);
-        if(!Objects.equals(fileName, "")) {
+
             try {
-            System.out.println(Files.readString(path));
+                if(!Objects.equals(fileName, ""))
+                    System.out.println(Files.readString(path));
             }
             catch (IOException e) {
                 System.out.println("no file exists");
             }
-        }
-        else {
-            System.out.println("no file exists");
-        }
+
     }
 
 

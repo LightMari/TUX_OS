@@ -48,7 +48,7 @@ public class Os_res {
             }
             System.out.println("\n-----------------------------------------");
             set_animals();
-            set_installed_commands();
+            set_installed_command_manuals();
     }
     public static void set_animals(){
         animals.put("cat","   |\\---/|\n" +
@@ -80,9 +80,7 @@ public class Os_res {
                 "/__.-'|_|--|_|");
     }
 
-
-
-    public static void set_installed_commands(){
+    public static void set_installed_command_manuals(){
         installedCommands.put("help","This command used to display some commands in terminal\n" +
                 "type 'help' :to see all commands \n" +
                 "no 'args' in this command \n");
@@ -118,9 +116,17 @@ public class Os_res {
                 type 'touch' *file name .extension * : create a file \s
                 touch 'filename works with extension' \s
                 """);
+        installedCommands.put("cat", """
+                This command used create a display the contents in a file\s
+                type 'cat' *file name .extension * : show content of a file \s
+                """);
+        installedCommands.put("nano", """
+                This command used enter a text editor\s
+                type 'nano' *file name .extension * : show content of a file and over write the content upto 1 line \s
+                """);
         installedCommands.put("draw","This command draw an ascii art animal into the terminal \n" +
                 "type 'draw' *animal name* : draw an animal  \n" +
-                "draw 'animal name or r - random animal to display'  \n");
+                "draw 'animal name (cat,dino,fish,spider,horse) or r - random animal to display'  \n");
 
     }
 
