@@ -15,6 +15,7 @@ public class Os_res {
     public final static String  system_path = "/home/maries/Development/Java/TUX_OS/src/";
     public static String  os_path = "file_system/root/canvas/";
     public static HashMap<String,String> animals = new HashMap<>();
+    public static HashMap<String,String>acsii_animations = new HashMap<>();
     public static HashMap<String,String> installedCommands = new HashMap<>();
     public static void bootAnimation() {
             String [] animations={
@@ -49,6 +50,7 @@ public class Os_res {
             System.out.println("\n-----------------------------------------");
             set_animals();
             set_installed_command_manuals();
+            set_acsiiAnimations();
     }
     public static void set_animals(){
         animals.put("cat","   |\\---/|\n" +
@@ -129,6 +131,15 @@ public class Os_res {
                 "draw 'animal name (cat,dino,fish,spider,horse) or r - random animal to display'  \n");
 
     }
+
+    public static void set_acsiiAnimations(){
+            acsii_animations.put("dash","|,/,-,\\");
+            acsii_animations.put("bounce","():::,:()::,::():,:::()");
+            acsii_animations.put("worm","~-~-o,_/\\_o,~-~-o,_/\\_o");
+            acsii_animations.put("faces","(.-.),(-_-),(.-.),(*_*)");
+    }
+
+
 
 
 }

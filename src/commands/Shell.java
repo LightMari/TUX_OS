@@ -50,6 +50,9 @@ public void execute(String [] args) {
         case"cat":
             Command_List.catCommand(args[1]);
             break;
+        case"animate":
+            Command_List.animateCommand(args[1]);
+            break;
         default:
             System.out.println("command not recognized");
 

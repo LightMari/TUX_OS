@@ -190,7 +190,7 @@ public class Command_List {
     public static void nanoCommand(String file_name) {
         Nano_TE textEditor = new Nano_TE();
         if(!Objects.equals(file_name, "n")) {
-            textEditor.openFile(Os_res.system_path+pwdCommand() + "/" + file_name);
+            textEditor.openFile(file_name);
         }
         else {
             touchCommand("untitled.txt");
@@ -208,6 +208,41 @@ public class Command_List {
             catch (IOException e) {
                 System.out.println("no file exists");
             }
+
+    }
+
+    public static void animateCommand(String animationName){
+        String [] animations;
+
+        if(Os_res.acsii_animations.get(animationName) != null) {
+            animations=Os_res.acsii_animations.get(animationName).split(",");
+            int frame_counter=0;
+            for(int i=0; i < 4*10 ;i++){
+
+                try {
+                    System.out.print("\r"+animations[frame_counter]);
+                    if (frame_counter==3)
+                        frame_counter=0;
+                    else
+                        frame_counter++;
+                    Thread.sleep(500);
+                }
+                catch (InterruptedException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+                System.out.println();
+        }
+        else {
+            System.out.println("  _____                                    _                           _   _ \n" +
+                    "  \\_   \\_ __   ___ ___  _ __ _ __ ___  ___| |_  __      _____  _ __ __| | / \\\n" +
+                    "   / /\\/ '_ \\ / __/ _ \\| '__| '__/ _ \\/ __| __| \\ \\ /\\ / / _ \\| '__/ _` |/  /\n" +
+                    "/\\/ /_ | | | | (_| (_) | |  | | |  __/ (__| |_   \\ V  V / (_) | | | (_| /\\_/ \n" +
+                    "\\____/ |_| |_|\\___\\___/|_|  |_|  \\___|\\___|\\__|   \\_/\\_/ \\___/|_|  \\__,_\\/   \n");
+
+        }
+
+
 
     }
 
