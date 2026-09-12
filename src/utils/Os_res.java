@@ -48,46 +48,9 @@ public class Os_res {
                 }
             }
             System.out.println("\n-----------------------------------------");
-            set_animals();
-            set_acsiiAnimations();
-    }
-    public static void set_animals(){
-        animals.put("cat","   |\\---/|\n" +
-                "   | ,_, |\n" +
-                "    \\_`_/-..----.\n" +
-                " ___/ `   ' ,\"\"+ \\  sk\n" +
-                "(__...'   __\\    |`.___.';\n" +
-                "  (_,...'(_,.`__)/'.....+");
-        animals.put("horse","           ,--,\n" +
-                "     _ ___/ /\\|\n" +
-                " ,;'( )__, )  ~\n" +
-                "//  //   '--; \n" +
-                "'   \\     | ^\n" +
-                "     ^    ^");
-        animals.put("fish","        O  o\n" +
-                "          _\\_   o\n" +
-                ">('>   \\\\/  o\\ .\n" +
-                "       //\\___=\n" +
-                "          ''");
-        animals.put("spider"," ||  ||  \n" +
-                " \\\\()// \n" +
-                "//(__)\\\\\n" +
-                "||    ||");
-        animals.put("dino","             __\n" +
-                "              / _)\n" +
-                "     _/\\/\\/\\_/ /\n" +
-                "   _|         /\n" +
-                " _|  (  | (  |\n" +
-                "/__.-'|_|--|_|");
+
     }
 
-
-    public static void set_acsiiAnimations(){
-            acsii_animations.put("dash","|,/,-,\\");
-            acsii_animations.put("bounce","():::,:()::,::():,:::()");
-            acsii_animations.put("worm","~-~-o,_/\\_o,~-~-o,_/\\_o");
-            acsii_animations.put("faces","(.-.),(-_-),(.-.),(*_*)");
-    }
 
 
 

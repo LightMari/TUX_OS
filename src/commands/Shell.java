@@ -14,7 +14,7 @@ public class Shell {
     MVFCommand mvfCommand;
     MVBCommand mvbCommand;
     HelperCommand helperCommand;
-
+    DrawCommand drawCommand;
     Shell(){
         echoCommand= new EchoCommand();
         touchCommand= new TouchCommand();
@@ -23,6 +23,7 @@ public class Shell {
         mvfCommand= new MVFCommand();
         mvbCommand= new MVBCommand();
         helperCommand= new HelperCommand();
+        drawCommand= new DrawCommand();
 
         Os_res.installedCommands.put(echoCommand.commandName, echoCommand.info());
         Os_res.installedCommands.put(touchCommand.commandName, touchCommand.info());
@@ -31,6 +32,7 @@ public class Shell {
         Os_res.installedCommands.put(mvbCommand.commandName, mvbCommand.info());
         Os_res.installedCommands.put(mvfCommand.commandName, mvfCommand.info());
         Os_res.installedCommands.put(helperCommand.commandName, helperCommand.info());
+        Os_res.installedCommands.put(drawCommand.commandName, drawCommand.info());
     }
 public void execute(String [] args) {
 
@@ -62,6 +64,9 @@ public void execute(String [] args) {
             break;
         case "helper":
             helperCommand.execute(args[1]);
+            break;
+        case "draw":
+            drawCommand.execute(args[1]);
             break;
         default:
             System.out.println("command not recognized");
