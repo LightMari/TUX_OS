@@ -1,57 +1,67 @@
 package commands;
 
+import utils.Os_res;
+
+import java.util.Arrays;
+import java.util.Objects;
+
 public class Shell {
 
+    EchoCommand echoCommand ;
+    TouchCommand touchCommand;
+    RmCommand rmCommand;
+    LsCommand lsCommand;
+    MVFCommand mvfCommand;
+    MVBCommand mvbCommand;
+    HelperCommand helperCommand;
+
+    Shell(){
+        echoCommand= new EchoCommand();
+        touchCommand= new TouchCommand();
+        rmCommand= new RmCommand();
+        lsCommand= new LsCommand();
+        mvfCommand= new MVFCommand();
+        mvbCommand= new MVBCommand();
+        helperCommand= new HelperCommand();
+
+        Os_res.installedCommands.put(echoCommand.commandName, echoCommand.info());
+        Os_res.installedCommands.put(touchCommand.commandName, touchCommand.info());
+        Os_res.installedCommands.put(rmCommand.commandName, rmCommand.info());
+        Os_res.installedCommands.put(lsCommand.commandName, lsCommand.info());
+        Os_res.installedCommands.put(mvbCommand.commandName, mvbCommand.info());
+        Os_res.installedCommands.put(mvfCommand.commandName, mvfCommand.info());
+        Os_res.installedCommands.put(helperCommand.commandName, helperCommand.info());
+    }
 public void execute(String [] args) {
 
     switch (args[0]) {
         case "help":
-            Command_List.getCommands();
+            System.out.println(Os_res.installedCommands.keySet());
             break;
         case "echo":
-            Command_List.EchoCommand(args);
-            break;
-        case "time":
-            Command_List.TimeCommand();
-            break;
-        case "date":
-            Command_List.DateCommand();
-            break;
-        case "ls":
-            Command_List.lsCommand();
-            break;
-        case "clear":
-            Command_List.clearCommand();
+            String input_cmd = "";
+            for (int i = 1; i < args.length ; i++) {
+                input_cmd = input_cmd .concat(args[i]+" ");
+            }
+            echoCommand.execute(input_cmd);
             break;
         case "touch":
-            Command_List.touchCommand(args[1]);
+           touchCommand.execute(args[1]);
             break;
-        case "pwd":
-            System.out.println(Command_List.pwdCommand());
-        break;
         case "rm":
-            Command_List.rmCommand(args[1]);
+            rmCommand.execute(args[1]);
+            break;
+        case "ls":
+            lsCommand.execute(Os_res.system_path+Os_res.os_path);
             break;
         case "mvf":
-            Command_List.mvfCommand(args[1]);
+            lsCommand.execute(args[1]);
             break;
         case "mvb":
-            Command_List.mvbCommand();
+            mvbCommand.execute(Os_res.os_path);
             break;
-        case "draw":
-            Command_List.drawCommand(args[1]);
-            break;
-        case "man":
-            Command_List.manCommand(args[1]);
-            break;
-        case"nano":
-            Command_List.nanoCommand(args[1]);
-            break;
-        case"cat":
-            Command_List.catCommand(args[1]);
-            break;
-        case"animate":
-            Command_List.animateCommand(args[1]);
+        case "helper":
+            helperCommand.execute(args[1]);
             break;
         default:
             System.out.println("command not recognized");

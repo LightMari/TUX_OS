@@ -19,19 +19,12 @@ public class Command_List {
                 "help - help for commands",
                 "exit - exit the program",
                 "echo - print any text",
-                "date - current date",
-                "time - current time",
                 "ls - list directory",
-                "clear - clear terminal ",
                 "touch - create a txt file ",
                 "pwd - display current directory",
                 "mvf - move forward into a folder",
                 "mvb - move backward into a folder",
-                "draw - display a cool ASCII art animals",
-                "man - display the manual for command",
                 "cat - display the text from a file",
-                "nano - enter text editor",
-
                 "-------------------------------",
         };
         for (String command : commandList) {
@@ -93,6 +86,7 @@ public class Command_List {
     public static String pwdCommand() {
         return Os_res.os_path;
     }
+
     public static void touchCommand(String fileName) {
         Path path = Paths.get(Os_res.system_path + pwdCommand() + fileName );
 
@@ -158,11 +152,7 @@ public class Command_List {
             if(Os_res.animals.get(animal_Name) != null)
             System.out.println("\n"+Os_res.animals.get(animal_Name)+"\n");
             else
-                System.out.println("  _____                                    _                           _   _ \n" +
-                        "  \\_   \\_ __   ___ ___  _ __ _ __ ___  ___| |_  __      _____  _ __ __| | / \\\n" +
-                        "   / /\\/ '_ \\ / __/ _ \\| '__| '__/ _ \\/ __| __| \\ \\ /\\ / / _ \\| '__/ _` |/  /\n" +
-                        "/\\/ /_ | | | | (_| (_) | |  | | |  __/ (__| |_   \\ V  V / (_) | | | (_| /\\_/ \n" +
-                        "\\____/ |_| |_|\\___\\___/|_|  |_|  \\___|\\___|\\__|   \\_/\\_/ \\___/|_|  \\__,_\\/   \n");
+                System.out.println("Invalid command argument");
         }
         else{
             String[] animals = Os_res.animals.keySet().toArray(new String[0]);
@@ -178,11 +168,7 @@ public class Command_List {
                 System.out.println("\n"+Os_res.installedCommands.get(command_name));
             }
             else{
-                System.out.println("  _____                                    _                           _   _ \n" +
-                        "  \\_   \\_ __   ___ ___  _ __ _ __ ___  ___| |_  __      _____  _ __ __| | / \\\n" +
-                        "   / /\\/ '_ \\ / __/ _ \\| '__| '__/ _ \\/ __| __| \\ \\ /\\ / / _ \\| '__/ _` |/  /\n" +
-                        "/\\/ /_ | | | | (_| (_) | |  | | |  __/ (__| |_   \\ V  V / (_) | | | (_| /\\_/ \n" +
-                        "\\____/ |_| |_|\\___\\___/|_|  |_|  \\___|\\___|\\__|   \\_/\\_/ \\___/|_|  \\__,_\\/   \n");
+                System.out.println("Invalid command argument");
             }
         }
 

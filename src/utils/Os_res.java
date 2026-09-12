@@ -44,12 +44,11 @@ public class Os_res {
                     System.out.print("\r"+animation);
                 }
                 catch (InterruptedException e) {
-                    e.printStackTrace();
+                    System.out.println(e.getMessage());
                 }
             }
             System.out.println("\n-----------------------------------------");
             set_animals();
-            set_installed_command_manuals();
             set_acsiiAnimations();
     }
     public static void set_animals(){
@@ -82,55 +81,6 @@ public class Os_res {
                 "/__.-'|_|--|_|");
     }
 
-    public static void set_installed_command_manuals(){
-        installedCommands.put("help","This command used to display some commands in terminal\n" +
-                "type 'help' :to see all commands \n" +
-                "no 'args' in this command \n");
-        installedCommands.put("echo","This command used to display given text to terminal\n" +
-                "type 'echo *text*' :to print the text in the console \n" +
-                "echo 'any text' : text args can have any text \n");
-        installedCommands.put("date","This command used to display current system date \n" +
-                "type 'date' *no args* :to print the current date from system \n" +
-                "no 'args' in this command \n");
-        installedCommands.put("time","This command used to display current system time \n" +
-                "type 'time' *no args* :to print the current time from system \n" +
-                "no 'args' in this command \n");
-        installedCommands.put("ls","This command used to display current list of directory and files \n" +
-                "type 'ls' *no args* :to print the list of current files and folders in format of [F] | [D] \n" +
-                "no 'args' in this command \n");
-        installedCommands.put("clear","This command used to clear all text in the terminal \n" +
-                "type 'clear' *no args* : clear the terminal text  \n" +
-                "no 'args' in this command \n");
-         installedCommands.put("man","This command used to display the manual for the installed commands \n" +
-                "type 'man' *command name* : manual of the command  \n" +
-                "man 'command name' know more about the command \n");
-         installedCommands.put("pwd","This command used to display present working directory \n" +
-                "type 'pwd' *no args* : display current working directory \n" +
-                "no 'args' returns a absolute path \n");
-         installedCommands.put("mvf","This command used move into a directory \n" +
-                "type 'mvf' *directory name* : move forward into a directory \n" +
-                "mvf 'directory name' get into the given directory  \n");
-         installedCommands.put("mvb","This command used move out of a directory \n" +
-                "type 'mvb' *no args* : move back from directory \n" +
-                "no 'args' get out from current directory  \n");
-        installedCommands.put("touch", """
-                This command used create a new file\s
-                type 'touch' *file name .extension * : create a file \s
-                touch 'filename works with extension' \s
-                """);
-        installedCommands.put("cat", """
-                This command used create a display the contents in a file\s
-                type 'cat' *file name .extension * : show content of a file \s
-                """);
-        installedCommands.put("nano", """
-                This command used enter a text editor\s
-                type 'nano' *file name .extension * : show content of a file and over write the content upto 1 line \s
-                """);
-        installedCommands.put("draw","This command draw an ascii art animal into the terminal \n" +
-                "type 'draw' *animal name* : draw an animal  \n" +
-                "draw 'animal name (cat,dino,fish,spider,horse) or r - random animal to display'  \n");
-
-    }
 
     public static void set_acsiiAnimations(){
             acsii_animations.put("dash","|,/,-,\\");

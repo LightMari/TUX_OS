@@ -13,7 +13,6 @@ public class Terminal {
             System.out.print(Os_res.os_path + "> ");
             cmd_command = cmd_scanner.nextLine().toLowerCase();
             String [] cmd = cmd_command.trim().split("\\s+");
-
             try {
                     if (cmd[0].equals("exit"))
                         break;
@@ -21,7 +20,7 @@ public class Terminal {
                         shell.execute(cmd);
             }
             catch (Exception e) {
-                //nothing will do
+                System.out.println("invalid command argument");
 
             }
 
