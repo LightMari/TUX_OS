@@ -15,6 +15,8 @@ public class Shell {
     MVBCommand mvbCommand;
     HelperCommand helperCommand;
     DrawCommand drawCommand;
+    PsCommand psCommand;
+    CalCommand calCommand;
     Shell(){
         echoCommand= new EchoCommand();
         touchCommand= new TouchCommand();
@@ -24,6 +26,8 @@ public class Shell {
         mvbCommand= new MVBCommand();
         helperCommand= new HelperCommand();
         drawCommand= new DrawCommand();
+        psCommand = new PsCommand();
+        calCommand = new CalCommand();
 
         Os_res.installedCommands.put(echoCommand.commandName, echoCommand.info());
         Os_res.installedCommands.put(touchCommand.commandName, touchCommand.info());
@@ -33,6 +37,8 @@ public class Shell {
         Os_res.installedCommands.put(mvfCommand.commandName, mvfCommand.info());
         Os_res.installedCommands.put(helperCommand.commandName, helperCommand.info());
         Os_res.installedCommands.put(drawCommand.commandName, drawCommand.info());
+        Os_res.installedCommands.put(psCommand.commandName, psCommand.info());
+        Os_res.installedCommands.put(calCommand.commandName, calCommand.info());
     }
 public void execute(String [] args) {
 
@@ -57,7 +63,7 @@ public void execute(String [] args) {
             lsCommand.execute(Os_res.system_path+Os_res.os_path);
             break;
         case "mvf":
-            lsCommand.execute(args[1]);
+            mvfCommand.execute(args[1]);
             break;
         case "mvb":
             mvbCommand.execute(Os_res.os_path);
@@ -67,6 +73,12 @@ public void execute(String [] args) {
             break;
         case "draw":
             drawCommand.execute(args[1]);
+            break;
+        case "ps":
+            psCommand.execute(args[0]);
+            break;
+        case "cal":
+            calCommand.execute(args[0]);
             break;
         default:
             System.out.println("command not recognized");
