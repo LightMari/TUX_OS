@@ -15,8 +15,8 @@ public class Os_res {
              "   ╚═╝    ╚═════╝ ╚═╝  ╚═╝     ╚═════╝ ╚══════╝    \n" +
              "---------------------------------------------------";
     //change the '/' in the code
-    public final static String  system_path = "C:\\Users\\acer\\IdeaProjects\\TUX_OS\\src\\";
-    public static String  os_path = "file_system\\root\\canvas\\";
+    public final static String  system_path = "/home/maries/Development/Java/TUX_OS/src/";
+    public static String  os_path = "file_system/root/canvas/";
     public static Calculator calculator;
     public static HashMap<String,String> animals = new HashMap<>();
     public static HashMap<String,String>acsii_animations = new HashMap<>();
