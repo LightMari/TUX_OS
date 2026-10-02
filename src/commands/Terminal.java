@@ -21,7 +21,6 @@ public class Terminal {
             }
             catch (Exception e) {
                 System.out.println("invalid command argument");
-
             }
 
 

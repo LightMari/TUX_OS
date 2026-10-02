@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
 
         System.out.println(Os_res.logo);
-        Os_res.bootAnimation();
+        //Os_res.bootAnimation();
         Terminal.start();
 
     }

@@ -1,5 +1,5 @@
 package commands;
-
+import apps.calculator;
 import utils.Os_res;
 
 public class CalCommand extends Command_Manual implements Command{
@@ -29,13 +29,17 @@ public class CalCommand extends Command_Manual implements Command{
     @Override
     public void execute(String fileName) {
 
-        if(Os_res.calculator==null || !Os_res.calculator.isAlive()){
-            Os_res.calculator = new Calculator();
-            Os_res.calculator.start();
-        }
-        else{
-            System.out.println("already cal is RUNNING");
-        }
+            calculator cal = new calculator();
+        System.out.println("calculator called");
+        cal.start();
+
+//        if(Os_res.calculator==null || !Os_res.calculator.isAlive()){
+//            Os_res.calculator = new Calculator();
+//            Os_res.calculator.start();
+//        }
+//        else{
+//            System.out.println("already cal is RUNNING");
+//        }
 
     }
     @Override
