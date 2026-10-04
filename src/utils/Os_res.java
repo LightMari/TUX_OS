@@ -1,5 +1,7 @@
 package utils;
 
+import apps.RockPaperScissor;
+import apps.calculator;
 import commands.Calculator;
 
 import java.util.HashMap;
@@ -17,7 +19,8 @@ public class Os_res {
     //change the '/' in the code
     public final static String  system_path = "/home/maries/Development/Java/TUX_OS/src/";
     public static String  os_path = "file_system/root/canvas/";
-    public static Calculator calculator;
+    public static calculator cal;
+    public static RockPaperScissor rpsG;
     public static HashMap<String,String> animals = new HashMap<>();
     public static HashMap<String,String>acsii_animations = new HashMap<>();
     public static HashMap<String,String> installedCommands = new HashMap<>();

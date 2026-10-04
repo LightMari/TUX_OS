@@ -17,6 +17,8 @@ public class Shell {
     DrawCommand drawCommand;
     PsCommand psCommand;
     CalCommand calCommand;
+    RpsCommand rpsCommand;
+    KillCommand killCommand;
     Shell(){
         echoCommand= new EchoCommand();
         touchCommand= new TouchCommand();
@@ -28,6 +30,8 @@ public class Shell {
         drawCommand= new DrawCommand();
         psCommand = new PsCommand();
         calCommand = new CalCommand();
+        rpsCommand = new RpsCommand();
+        killCommand = new KillCommand();
 
         Os_res.installedCommands.put(echoCommand.commandName, echoCommand.info());
         Os_res.installedCommands.put(touchCommand.commandName, touchCommand.info());
@@ -39,6 +43,9 @@ public class Shell {
         Os_res.installedCommands.put(drawCommand.commandName, drawCommand.info());
         Os_res.installedCommands.put(psCommand.commandName, psCommand.info());
         Os_res.installedCommands.put(calCommand.commandName, calCommand.info());
+        Os_res.installedCommands.put(rpsCommand.commandName, rpsCommand.info());
+        Os_res.installedCommands.put(killCommand.commandName, killCommand.info());
+
     }
 public void execute(String [] args) {
 
@@ -79,6 +86,12 @@ public void execute(String [] args) {
             break;
         case "cal":
             calCommand.execute(args[0]);
+            break;
+        case "rps":
+            rpsCommand.execute(args[0]);
+            break;
+        case "kill":
+            killCommand.execute(args[1]);
             break;
         default:
             System.out.println("command not recognized");

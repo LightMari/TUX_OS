@@ -1,4 +1,5 @@
 package commands;
+import process.ProcessManager;
 import utils.Os_res;
 
 import java.util.Scanner;
@@ -15,7 +16,10 @@ public class Terminal {
             String [] cmd = cmd_command.trim().split("\\s+");
             try {
                     if (cmd[0].equals("exit"))
+                        if(ProcessManager.processes.isEmpty())
                         break;
+                        else
+                            System.out.println("Close the running app to exit");
                     else
                         shell.execute(cmd);
             }

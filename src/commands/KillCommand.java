@@ -1,15 +1,15 @@
 package commands;
 
 import process.ProcessManager;
-import utils.Os_res;
 
-public class PsCommand extends Command_Manual implements Command{
+import javax.swing.*;
 
+public class KillCommand extends Command_Manual implements Command{
     String commandName;
     String commandManual;
 
-    PsCommand() {
-        commandName = "ps";
+    KillCommand() {
+        commandName = "kill";
         commandManual = "TUX_OS COMMAND MANUAL\n" +
                 "======================\n" +
                 "\n" +
@@ -17,28 +17,31 @@ public class PsCommand extends Command_Manual implements Command{
                 commandName +"(Process Manager)"+ "\n" +
                 "\n" +
                 "DESCRIPTION\n" +
-                "List the running Process.\n" +
+                "Kill or stop the running Process.\n" +
                 "\n" +
                 "USAGE\n" +
-                commandName +" <no args needed>\n" +
+                commandName +" <Process ID>\n" +
                 "\n" +
                 "ARGUMENTS\n" +
-                "<no args needed>\n" +
-                "List the running Process.";
+                "<Process ID>\n" +
+                "Kill the running Process.";
     }
 
 
     @Override
-    public void execute(String fileName) {
-        ProcessManager.showProcesses();
+    public void execute(String processID) {
+        try {
+        ProcessManager.killProcess(Integer.parseInt(processID));
+        }
+        catch (NumberFormatException e){
+            System.out.println("Please enter a Process ID");
+        }
     }
 
     @Override
     public String info(){
         return commandManual;
     }
-
-
 
 
 }

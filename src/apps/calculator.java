@@ -1,10 +1,14 @@
 package apps;
+import utils.Os_res;
+
 import java.io.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.time.Duration;
+import java.util.concurrent.CountDownLatch;
 import javax.swing.*;
 
-public class calculator implements ActionListener{
+public class calculator extends Thread implements ActionListener{
 
     JFrame APP_frame;
     boolean isOprator=false;
@@ -18,9 +22,11 @@ public class calculator implements ActionListener{
     JPanel buttonPlaceholder;
     JPanel placeholderCanvas;
     JButton clear_button;
+    private CountDownLatch windowClosed;
+
     public calculator(){
         APP_frame = new JFrame("Calculator");
-
+        windowClosed=new CountDownLatch(1);
         Display_panel = new JPanel();
         buttonPlaceholder=new JPanel();
         placeholderCanvas=new JPanel();
@@ -31,13 +37,15 @@ public class calculator implements ActionListener{
         set_buttons();
     }
 
-    public void start(){
+    @Override
+    public void run(){
         APP_frame.setSize(450,550);
-        APP_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        APP_frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         placeholderCanvas.setLayout(null);
         Display_panel.setBackground(Color.black);
         Display_panel.setLayout(new FlowLayout(FlowLayout.RIGHT));
         placeholderCanvas.setBackground(Color.GRAY);
+
 
         buttonPlaceholder.setLayout(new GridLayout(4,4));
         for(JButton button : number_buttons){
@@ -69,6 +77,20 @@ public class calculator implements ActionListener{
         APP_frame.setResizable(false);
 
         APP_frame.setVisible(true);
+
+        while(true){
+            try {
+                sleep(Duration.ofDays(10));
+            }catch (InterruptedException e){
+                System.out.println("Calculator Terminated....");
+//                APP_frame.setVisible(false);
+                Os_res.cal = null;
+                APP_frame.dispose();
+                break;
+            }
+        }
+
+
     }
 
     private void set_buttons(){
@@ -87,7 +109,6 @@ public class calculator implements ActionListener{
 
                 number_buttons[9].setText("0");
 
-
     }
 
     @Override
@@ -99,15 +120,15 @@ public class calculator implements ActionListener{
 
         }
         else if (e.getSource() == Calculate_button) {
-            if (isOprator){
+            if (isOprator && !display.getText().isEmpty()) {
                 input2 = Double.parseDouble(display.getText());
                 isOprator=false;
-            }
             switch (oprator_symbol) {
                 case '+'->input1 = input1 + input2;
                 case '-'->input1 = input1 - input2;
                 case '*'->input1 = input1 * input2;
                 case '/'->input1 = input1 / input2;
+            }
             }
             display.setText(String.valueOf(input1));
         }
@@ -115,10 +136,13 @@ public class calculator implements ActionListener{
             display.setText("");
         }
         else{
-                oprator_symbol = command.charAt(0);
-                input1 = Double.parseDouble(display.getText());
-                display.setText("");
-                isOprator=true;
+                if (!isOprator){
+                    oprator_symbol = command.charAt(0);
+                    input1 = Double.parseDouble(display.getText());
+                    display.setText("");
+                    isOprator=true;
+                }
+
         }
 
 
