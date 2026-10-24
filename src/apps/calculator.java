@@ -40,7 +40,7 @@ public class calculator extends Thread implements ActionListener{
     @Override
     public void run(){
         APP_frame.setSize(450,550);
-        APP_frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        APP_frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         placeholderCanvas.setLayout(null);
         Display_panel.setBackground(Color.black);
         Display_panel.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -55,10 +55,17 @@ public class calculator extends Thread implements ActionListener{
 
         Calculate_button.addActionListener(this);
         clear_button.addActionListener(this);
+
         Calculate_button.setBackground(Color.ORANGE);
         Calculate_button.setForeground(Color.black);
+        Calculate_button.setBorderPainted(false);
+        Calculate_button.setFocusPainted(false);
+
         clear_button.setBackground(Color.darkGray);
+        clear_button.setFocusPainted(false);
+        clear_button.setBorderPainted(false);
         clear_button.setForeground(Color.white);
+
         buttonPlaceholder.setSize(200,200);
         display.setForeground(Color.WHITE);
         display.setFont(new Font("Arial",Font.BOLD,25));
@@ -117,17 +124,21 @@ public class calculator extends Thread implements ActionListener{
 
         if (command.matches("[0-9]")) {
             display.setText(display.getText() + command);
-
         }
         else if (e.getSource() == Calculate_button) {
             if (isOprator && !display.getText().isEmpty()) {
                 input2 = Double.parseDouble(display.getText());
+                if(input2==0) {
+                    input1 = input2;
+                    input2 = 1;
+                }
+
                 isOprator=false;
             switch (oprator_symbol) {
                 case '+'->input1 = input1 + input2;
                 case '-'->input1 = input1 - input2;
                 case '*'->input1 = input1 * input2;
-                case '/'->input1 = input1 / input2;
+                case '/' -> input1 = input1 / input2;
             }
             }
             display.setText(String.valueOf(input1));
@@ -138,9 +149,15 @@ public class calculator extends Thread implements ActionListener{
         else{
                 if (!isOprator){
                     oprator_symbol = command.charAt(0);
+                    try{
                     input1 = Double.parseDouble(display.getText());
                     display.setText("");
                     isOprator=true;
+                    }
+                    catch (NumberFormatException nfe){
+                    display.setText("");
+                    }
+
                 }
 
         }

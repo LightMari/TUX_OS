@@ -3,6 +3,7 @@ package apps;
 import utils.Os_res;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,10 +13,11 @@ import java.util.Random;
 
 public class RockPaperScissor extends Thread implements ActionListener {
     public int matchCount=0;
-    public int WinCount=0;
+    public int WinCount=0,looseCount=0;
     JFrame frame;
-    JPanel playerPanel,enemyPanel,AnnouncerPanel,buttonPanel,stackPanel;
-    JLabel playerlabel,enemylabel,announcerlabel;
+    JPanel playerPanel,enemyPanel,AnnouncerPanel,buttonPanel,stackPanel,wrapperpanel,wrapperpanel2;
+    JLabel playerAction,enemyAction,playerlabel,enemylabel,announcerlabel,enemyScoreannouncerlabel,
+            playerScoreannouncerlabel,matchCounter;
     JButton rock,paper,scissor;
     Random enemySystem;
 
@@ -28,9 +30,15 @@ public class RockPaperScissor extends Thread implements ActionListener {
     buttonPanel = new JPanel();
     stackPanel = new JPanel();
 
-    playerlabel=new JLabel("player 0");
-    enemylabel=new JLabel("enemy 0");
-    announcerlabel=new JLabel("Announcer");
+    playerlabel=new JLabel("Player");
+    enemylabel=new JLabel("Enemy");
+
+    announcerlabel=new JLabel("!!Get Started !!",SwingConstants.CENTER);
+    playerAction=new JLabel("Player Action",SwingConstants.CENTER);
+    enemyAction = new JLabel("Enemy Action",SwingConstants.CENTER);
+    playerScoreannouncerlabel = new JLabel("0",SwingConstants.CENTER);
+    enemyScoreannouncerlabel = new JLabel("0",SwingConstants.CENTER);
+    matchCounter=new JLabel("Match Count: 0",SwingConstants.CENTER);
     enemySystem=new Random();
     setImageButtons();
     }
@@ -39,20 +47,59 @@ public class RockPaperScissor extends Thread implements ActionListener {
     public void run(){
         frame.setSize(500,500);
         frame.setResizable(false);
-        frame.setLayout(new GridLayout(3,1));
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(new BorderLayout());
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
+        wrapperpanel=new JPanel(new GridLayout(2,1));
+        wrapperpanel2 =new JPanel(new GridLayout(2,1));
 
         playerPanel.add(playerlabel);
         playerPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
 
-        AnnouncerPanel.add(announcerlabel);
-        AnnouncerPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
-        AnnouncerPanel.setBackground(Color.ORANGE);
+        playerScoreannouncerlabel.setBackground(Color.gray);
+        playerScoreannouncerlabel.setForeground(Color.white);
+        playerScoreannouncerlabel.setOpaque(true);
 
+        enemyScoreannouncerlabel.setBackground(Color.lightGray);
+        enemyScoreannouncerlabel.setOpaque(true);
+        enemyScoreannouncerlabel.setForeground(Color.darkGray);
+
+        playerAction.setBackground(Color.gray);
+        playerAction.setOpaque(true);
+        playerAction.setForeground(Color.white);
+
+        enemyAction.setBackground(Color.lightGray);
+        enemyAction.setOpaque(true);
+        enemyAction.setForeground(Color.darkGray);
+
+        announcerlabel.setBackground(Color.gray);
+        announcerlabel.setOpaque(true);
+
+        announcerlabel.setFont(announcerlabel.getFont().deriveFont(24.0f));
+        playerAction.setFont(playerAction.getFont().deriveFont(24.0f));
+        enemyAction.setFont(enemyAction.getFont().deriveFont(24.0f));
+
+        playerScoreannouncerlabel.setFont(playerScoreannouncerlabel.getFont().deriveFont(22.0f));
+        enemyScoreannouncerlabel.setFont(enemyScoreannouncerlabel.getFont().deriveFont(22.0f));
+
+        matchCounter.setFont(matchCounter.getFont().deriveFont(18.0f));
+
+
+        AnnouncerPanel.setLayout(new GridLayout(3,2));
+        AnnouncerPanel.add(playerScoreannouncerlabel);
+        AnnouncerPanel.add(enemyScoreannouncerlabel);
+        AnnouncerPanel.add(playerAction);
+        AnnouncerPanel.add(enemyAction);
+
+        wrapperpanel.add(AnnouncerPanel);
+        wrapperpanel2.add(announcerlabel);
+        wrapperpanel2.add(matchCounter);
+        wrapperpanel.add(wrapperpanel2);
+
+        playerlabel.setFont(playerlabel.getFont().deriveFont(18.0f));
+        enemylabel.setFont(enemylabel.getFont().deriveFont(18.0f));
         enemyPanel.add(enemylabel);
         enemyPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
-        enemyPanel.setBackground(Color.GRAY);
 
         stackPanel.setLayout(new GridLayout(1,2));
         stackPanel.add(playerPanel);
@@ -63,9 +110,15 @@ public class RockPaperScissor extends Thread implements ActionListener {
         buttonPanel.add(paper);
         buttonPanel.add(scissor);
 
-        frame.add(stackPanel);
-        frame.add(AnnouncerPanel);
-        frame.add(buttonPanel);
+       wrapperpanel.setBackground(Color.lightGray);
+       wrapperpanel.setOpaque(true);
+
+        frame.add(BorderLayout.NORTH,stackPanel);
+        frame.add(BorderLayout.CENTER,wrapperpanel);
+        frame.add(BorderLayout.WEST,new JPanel());
+        frame.add(BorderLayout.EAST,new JPanel());
+
+        frame.add(BorderLayout.SOUTH,buttonPanel);
 
 
         frame.setVisible(true);
@@ -89,14 +142,27 @@ public class RockPaperScissor extends Thread implements ActionListener {
         paper=new JButton("Paper");
         scissor=new JButton("Scissor");
 
+        rock.setBackground(Color.gray);
+        rock.setForeground(Color.white);
+        rock.setBorderPainted(false);
+        rock.setFocusPainted(false);
+        rock.setFont(rock.getFont().deriveFont(18.0f));
+
+        paper.setBackground(Color.gray);
+        paper.setForeground(Color.white);
+        paper.setBorderPainted(false);
+        paper.setFocusPainted(false);
+        paper.setFont(paper.getFont().deriveFont(18.0f));
+
+        scissor.setBackground(Color.gray);
+        scissor.setForeground(Color.white);
+        scissor.setBorderPainted(false);
+        scissor.setFocusPainted(false);
+        scissor.setFont(scissor.getFont().deriveFont(18.0f));
+
         rock.addActionListener(this);
         paper.addActionListener(this);
         scissor.addActionListener(this);
-
-//        String imgPath="/home/maries/Development/Java/TUX_OS/src/utils/images/";
-//        rock.setIcon(new ImageIcon(imgPath + "stone.jpg"));
-//        paper.setIcon(new ImageIcon(imgPath + "paper.jpg"));
-//        scissor.setIcon(new ImageIcon(imgPath + "scissors.jpeg"));
 
 
     }
@@ -114,28 +180,37 @@ public class RockPaperScissor extends Thread implements ActionListener {
             case "Scissor" -> player_choice=2;
         }
 
+        playerAction.setText(symbols[player_choice]);
+        enemyAction.setText(symbols[enemy_choice]);
+        announcerlabel.setForeground(Color.green);
 
-
-    if(player_choice == enemy_choice){
-            announcerlabel.setText("Player :"+symbols[player_choice]+" Enemy :"+symbols[enemy_choice]+" Match Draw!!");
+        if(player_choice == enemy_choice){
+            announcerlabel.setForeground(Color.orange);
+            announcerlabel.setText("!! Match Draw !!");
         }
         else if(player_choice == 0 && enemy_choice==2){
-            announcerlabel.setText("Player :"+symbols[player_choice]+" Enemy :"+symbols[enemy_choice]+" Player WIN!!");
+            announcerlabel.setText("!! Player WIN !!");
             WinCount++;
         }
         else if(player_choice == 1 && enemy_choice==0){
-            announcerlabel.setText("Player :"+symbols[player_choice]+" Enemy :"+symbols[enemy_choice]+" Player WIN!!");
+            announcerlabel.setText("!! Player WIN !!");
             WinCount++;
         }
         else if(player_choice == 2 && enemy_choice==1){
-            announcerlabel.setText("Player :"+symbols[player_choice]+" Enemy :"+symbols[enemy_choice]+" Player WIN!!");
+            announcerlabel.setText("!! Player WIN !!");
             WinCount++;
         }
         else {
-            announcerlabel.setText("Player :"+symbols[player_choice]+" Enemy :"+symbols[enemy_choice]+" Enemy WIN!!");
+            announcerlabel.setForeground(Color.red);
+            announcerlabel.setText("!! Player LOOSE !!");
+            looseCount++;
         }
 
         matchCount++;
+        playerScoreannouncerlabel.setText(WinCount+"");
+        enemyScoreannouncerlabel.setText(looseCount+"");
+        matchCounter.setText("Match Count: "+matchCount);
+
 
     }
 
